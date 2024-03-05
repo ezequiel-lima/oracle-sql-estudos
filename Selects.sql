@@ -16,3 +16,26 @@ SELECT * FROM TB_PRODUTOS WHERE SABOR = 'Limao'
 
 /* utilizando o filtro para atualizar, o que eu coloco depois do WHERE serve tanto para o select quanto para o update*/
 UPDATE TB_PRODUTOS SET SABOR = 'Citricos' WHERE SABOR = 'Limao'
+
+/* SELECT CONDICIONAIS */
+SELECT * FROM TB_CLIENTES tc WHERE tc.IDADE = 22;
+SELECT * FROM TB_CLIENTES tc WHERE tc.IDADE > 22;
+SELECT * FROM TB_CLIENTES tc WHERE tc.IDADE >= 22;
+SELECT * FROM TB_CLIENTES tc WHERE tc.IDADE <= 22;
+SELECT * FROM TB_CLIENTES tc WHERE tc.IDADE <> 22; /* <> é igual ao != | é o DIFERENTE*/
+SELECT * FROM TB_CLIENTES tc WHERE tc.NOME <> 'Marcos Nougeuira';
+SELECT * FROM TB_PRODUTOS tp WHERE tp.PRECO_LISTA > 16.00;
+SELECT * FROM TB_VENDEDORES tv WHERE tv.PERCENTUAL_COMISSAO < 0.17;
+
+/* Filtro com datas */
+SELECT * FROM TB_CLIENTES tc WHERE tc.DATA_NASCIMENTO = '25/03/92'
+
+SELECT * FROM  TB_CLIENTES tc WHERE tc.DATA_NASCIMENTO = TO_DATE('25/03/1992', 'DD/MM/YYYY') /* consulta da igual */
+
+SELECT * FROM  TB_CLIENTES tc WHERE tc.DATA_NASCIMENTO > TO_DATE('02/07/1998', 'DD/MM/YYYY') /* conssulta data maior */
+
+SELECT * FROM  TB_CLIENTES tc WHERE tc.DATA_NASCIMENTO < TO_DATE('02/07/1998', 'DD/MM/YYYY') /* conssulta data menor */
+
+SELECT * FROM TB_CLIENTES tc WHERE TO_CHAR(tc.DATA_NASCIMENTO, 'MM') = 9; /* Consulta quem nasceu no mês 9 */ 
+
+SELECT * FROM TB_VENDEDORES tv WHERE TO_CHAR(tv.DATA_ADMISSAO, 'YYYY') >= 2020; /* Consulta pessoas admitidas de 2020 em diante */
