@@ -1,0 +1,62 @@
+SELECT * FROM TABELA_DE_PRODUTOS;
+
+SELECT * FROM TABELA_DE_PRODUTOS WHERE 1 = 1; /* sempre verdade por isso igual a linha de cima */
+
+SELECT * FROM TABELA_DE_PRODUTOS WHERE SABOR = 'Laranja';
+
+SELECT * FROM TABELA_DE_PRODUTOS WHERE EMBALAGEM = 'PET';
+
+SELECT * FROM TABELA_DE_PRODUTOS WHERE EMBALAGEM = 'Pet'; 
+
+
+/* Filtros Quantitativos */
+
+SELECT * FROM TABELA_DE_CLIENTES WHERE IDADE > 20;
+
+SELECT * FROM TABELA_DE_CLIENTES WHERE IDADE < 20;
+
+SELECT * FROM TABELA_DE_CLIENTES WHERE IDADE <> 18; /* diferente de  18 */
+
+SELECT * FROM TABELA_DE_CLIENTES WHERE DATA_DE_NASCIMENTO >= '14/11/95'
+
+SELECT * FROM TABELA_DE_CLIENTES WHERE DATA_DE_NASCIMENTO >= TO_DATE('14/11/1995', 'DD/MM/YYYY'); /* Garantir o resultado de datas */
+
+SELECT * FROM TABELA_DE_CLIENTES WHERE IDADE BETWEEN 18 AND 22;
+
+SELECT * FROM TABELA_DE_CLIENTES WHERE DATA_DE_NASCIMENTO BETWEEN TO_DATE('02/07/1998', 'DD/MM/YYYY') AND TO_DATE('15/06/2024', 'DD/MM/YYYY'); /* BETWEEN = ENTRE */
+
+
+/* Expressões Lógicas */
+
+SELECT * FROM TABELA_DE_PRODUTOS WHERE SABOR = 'Manga' OR TAMANHO = '470 ml';
+
+SELECT * FROM TABELA_DE_PRODUTOS WHERE SABOR = 'Manga' AND TAMANHO = '470 ml';
+
+SELECT * FROM TABELA_DE_PRODUTOS WHERE NOT(SABOR = 'Manga' AND TAMANHO = '470 ml');
+
+SELECT * FROM TABELA_DE_PRODUTOS WHERE NOT(SABOR = 'Manga' OR TAMANHO = '470 ml');
+
+
+/* Quando precisar de varios OR é melhor usar o IN */
+SELECT * FROM TABELA_DE_PRODUTOS WHERE SABOR = 'Manga' OR SABOR = 'Laranja' OR SABOR = 'Melancia';
+SELECT * FROM TABELA_DE_PRODUTOS WHERE SABOR IN ('Manga', 'Laranja', 'Melancia');
+
+SELECT * FROM TABELA_DE_PRODUTOS WHERE SABOR IN ('Manga', 'Laranja', 'Melancia') AND TAMANHO = '1 Litro';
+
+SELECT * FROM TABELA_DE_CLIENTES;
+                                              
+SELECT * FROM
+    TABELA_DE_CLIENTES
+WHERE
+    CIDADE IN('Sao Paulo', 'Rio de Janeiro')
+    AND ENDERECO_1 IN('R. Eduardo Luís Lopes', 'R. Manuel de Oliveira'); /* Cidade e Endereco precisa ser verdadeiro para trazer algum resultado*/
+    
+    
+/* Like */
+SELECT * FROM TABELA_DE_PRODUTOS tdp WHERE tdp.SABOR LIKE '%Limao'; /* pega tudo que termina com Limao */
+
+SELECT * FROM TABELA_DE_PRODUTOS tdp WHERE tdp.SABOR LIKE 'Morango%'; /* pega tudo que começa com Morango*/
+
+SELECT * FROM TABELA_DE_PRODUTOS tdp WHERE tdp.SABOR LIKE '%Maca%'; /* pega tudo que tenha Maca */
+
+SELECT * FROM TABELA_DE_CLIENTES tdc WHERE tdc.NOME LIKE '%Silva%';
