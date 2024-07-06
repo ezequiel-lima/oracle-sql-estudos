@@ -2,7 +2,7 @@
 /* Equivalente a um método(função) */
 
 /* estrutura da procedure */
-CREATE 
+CREATE PROCEDURE OR REPLACE
 
 IS
 
